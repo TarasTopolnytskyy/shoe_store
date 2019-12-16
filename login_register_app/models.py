@@ -87,7 +87,7 @@ class Shoe(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Photo(models.Model):
-    shoe_img = models.ImageField(upload_to='images/')
+    inventory_img = models.ImageField(upload_to='images/')
     Photo = models.ForeignKey(Inventory, related_name="item_photos", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
