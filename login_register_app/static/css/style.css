@@ -1,0 +1,15 @@
+.container{
+    margin: 0px auto;
+    width: 960px;
+    display: block;
+}
+
+.column{
+    display: inline-block;
+    width: 475px;
+}
+
+.head{
+    display: block;
+    text-align: center;
+}
