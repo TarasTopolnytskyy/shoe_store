@@ -7,8 +7,11 @@
     <title>Shoe</title>
 </head>
 <body>
+    
     <h1>Hello {{ request.session.user.first_name }} here are the Shoe Details!</h1>
 
+    <a href="logout">Log Out</a>
+    
     <h2>Shoe</h2>
     <p>{{inventory.item_name}}</p>
 

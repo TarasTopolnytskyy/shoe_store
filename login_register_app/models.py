@@ -74,6 +74,8 @@ class Inventory(models.Model):
     item_name = models.CharField(max_length = 255)
     item_color = models.CharField(max_length = 255)
     item_price = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     availability = models.BooleanField()
     buyer = models.ForeignKey(User, related_name="bought", on_delete = models.CASCADE)
