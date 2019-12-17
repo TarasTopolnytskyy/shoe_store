@@ -23,9 +23,10 @@
             <td>{{item_name.inventory}}</td>
             <td>{{item_brand.inventory}}</td>
             <td>{{item_price.inventory}}</td>
-            <td><a href='/'>View</td>
+            <td><a href='/{{inventory_id}}'>View</td>
         </tr>
         {% endfor %}
+    </table>
         <h2>The items you've bought.</h2>
     <table>
         <tr>
@@ -38,8 +39,9 @@
             <td>{{item_name.inventory}}</td>
             <td>{{item_brand.inventory}}</td>
             <td>{{item_price.inventory}}</td>
-            <td><a href='/'>View</td>
+            <td><a href='/{{inventory_id}}'>View</td>
         </tr>
+        {% endfor %}
     </table>
     
 </body>
