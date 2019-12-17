@@ -72,8 +72,17 @@ class Billing_Address(models.Model):
 class Inventory(models.Model):
     item_brand = models.CharField(max_length = 255)
     item_name = models.CharField(max_length = 255)
-    item_color = models.CharField(max_length = 255)
+    item_primary_color = models.CharField(max_length = 255)
+    item_secondary_color = models.CharField(max_length = 255, null=True)
     item_price = models.FloatField()
+    front_img = models.ImageField(upload_to='images/')
+    back_img = models.ImageField(upload_to='images/', null=True)
+    top_img = models.ImageField(upload_to='images/', null=True)
+    bottom_img = models.ImageField(upload_to='images/', null=True)
+    left_img = models.ImageField(upload_to='images/', null=True)
+    right_img = models.ImageField(upload_to='images/', null=True)
+
+    # condition = models.CharField(max_length = 255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -90,8 +99,16 @@ class Shoe(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Photo(models.Model):
-    inventory_img = models.ImageField(upload_to='images/')
-    Photo = models.ForeignKey(Inventory, related_name="item_photos", on_delete = models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+
+
+
+
+
+# class Photo(models.Model):
+#     inventory_img = models.ImageField(upload_to='images/')
+#     Photo = models.ForeignKey(Inventory, related_name="item_photos", on_delete = models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+
+
+

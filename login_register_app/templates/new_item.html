@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Welcome, {{ request.session.user_first_name }}! Sell an Item!</h1>
+    <a href="logout">Log Out</a>
 
     {% if messages %}
     <ul class="messages">    
@@ -18,7 +19,7 @@
     {% endif %}
 
     <br>
-    <form action="" method="POST">
+    <form action="/create_item" method="POST">
         {% csrf_token %}<br>
         Item Type: <input type="radio" name="item" value="shoe" checked>Shoe<input type="radio" name="item" value="other">Other <br><br>
         Item Brand: <input type="text" name="brand" value=""><br><br>
@@ -26,8 +27,14 @@
         Item Color: <input type="color" name="color" value="color"><br><br>
         Size: <input type="number" name="size" min="6" max="17" step=".5"><br><br>
         Male or Female or Other:<br> <input type="radio" name="gender" value="male" checked>Male<br><input type="radio" name="gender" value="female">Female<br><input type="radio" name="gender" value="other">Other<br><br>
-        Description: <input type="textfield" name="description" value=""><br><br>
-        Item Picture: <input type="file" name="photo" accept="image/*"><br><br>
+        Condition: <input type="textfield" name="description" value=""><br><br>
+        <h4>Item Pictures</h4>
+        Front Photo: <input type="file" name="front_photo" accept="image/*"><br><br>
+        Back Photo: <input type="file" name="back_photo" accept="image/*"><br><br>
+        Top Photo (optional): <input type="file" name="top_photo" accept="image/*"><br><br>
+        Bottom Photo (optional): <input type="file" name="top_photo" accept="image/*"><br><br>
+        Left Photo (optional): <input type="file" name="left_photo" accept="image/*"><br><br>
+        Right Photo (optional): <input type="file" name="right_photo" accept="image/*"><br><br>
         Asking Price: <input type="number" name="price" min="50" max="100000" step="10"><br><br>
         <input type="submit" name="submit" value="Add Item"> 
     </form>
