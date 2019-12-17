@@ -13,12 +13,25 @@
 </head>
 
 <body>
-    <h1>Congrats {{request.session.user_first_name}} , you are logged in!</h1>
-
-    <form action="/log_out" method="POST">
-        {% csrf_token %}
-        <input type="submit" name="log_out" value="Sign Out">
-    </form>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome, {{request.session.user_first_name}}</h1>
+            <form action="/log_out" method="POST">
+                {% csrf_token %}
+                <input id="sell" type="submit" value="SELL">
+            </form>
+            <form action="/log_out" method="POST">
+                {% csrf_token %}
+                <input id= "log_out" type="submit" name="log_out" value="Sign Out">
+            </form>
+        </div>
+        <div class="selector">
+            
+        </div>
+            <div class="items">
+    
+        </div>
+    </div>
 </body>
 
 </html>
