@@ -119,3 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT= '/Users/stant/Desktop/shoe_store_images/' #this should be set to a folder on your computer
+
+MEDIA_URL = '/media/' #this is going to get appended in your project-level urls.py file
