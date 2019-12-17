@@ -1,15 +1,60 @@
 .container{
+    border: 3px solid black;
     margin: 0px auto;
     width: 960px;
+    height: 700px;
     display: block;
+    /* padding: 20px; */
 }
 
 .column{
     display: inline-block;
-    width: 475px;
+    width: 250px;
+    border: 1px solid black;
+    padding:30px;
+    margin-left:100px;
 }
 
 .head{
     display: block;
     text-align: center;
+}
+.login{
+    /* display: inline-block; */
+    width: 160px;
+    border: 1px solid black;
+    padding: 30px;
+    margin-left:600px;
+    margin-top:-450px;
+}
+.header{
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+}
+input#login{
+    margin-left:720px;
+    margin-top:30px;
+}
+.selector{
+    border:1px solid black;
+    margin-top:80px;
+    height:300px;
+    width:200px;
+}
+.items{
+    border:1px solid black;
+    width:700px;
+    height:450px;
+    margin-left:230px;
+    margin-top:-300px;
+    overflow: scroll;
+}
+input#sell{
+    margin-left:550px;
+    margin-top:30px;
+}
+input#log_out{
+    margin-left:40px;
+    margin-top:30px;
 }

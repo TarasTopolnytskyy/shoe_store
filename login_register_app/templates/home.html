@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome to Shoe Store</title>
+    <title>Welcome to Shoe Store</title> 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome</h1>
+            <form action='/login_page' methon="POST">
+                <input id="login" type="submit" value="LOGIN">
+            </form>
+            
+        </div>
+        <div class="selector">
+            
+        </div>
+        <div class="items">
 
-    <h1>Welcome To The Shoe Store</h1>
-
-    <a href="/login_page">Login</a>
+        </div>
 
 
 </body>
