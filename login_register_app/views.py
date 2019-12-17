@@ -72,24 +72,12 @@ def item_info(request, inventory_id):
     }
     return render(request, "item_info.html", context)
 
-
-
-
-
-
-
 def user_info(request):
     user = User.objects.get(id=request.session['user_id'])
     context = {
         "user" : user
     }
     return render(request, "user_info.html", context)
-
-
-
-
-
-
 
 def new_item(request):
     context = {
@@ -99,9 +87,24 @@ def new_item(request):
 
 def create_item(request):
     user = User.objects.get(id = request.session['user_id'])
-
-    # Inventory.objects.create(item_brand = , item_name= , item_color = , item_type = , item_type.size = , item_type.sex = , item_photos.inventory_img = , availibaility = True, seller = user)
-
+    Inventory.objects.create(
+    item_type= request.POST["item"],
+    item_brand = request.POST["brand"], 
+    item_name= request.POST["name"], 
+    item_primary_color = request.POST["color_one"], 
+    item_secondary_color = request.POST["color_two"], 
+    item_price = request.POST['price'], 
+    front_img = request.POST["front_photo"], 
+    back_img = request.POST["back_photo"], 
+    top_img = request.POST["top_photo"], 
+    bottom_img = request.POST["bottom_photo"], 
+    left_img = request.POST["left_photo"], 
+    right_img = request.POST["right_photo"], 
+    condition = request.POST["condition"],
+    availibaility = True, 
+    seller = user,
+    size = request.POST["size"], 
+    sex = request.POST["gender"])
     return redirect('/home')
 
 def checkout(request):
@@ -110,3 +113,6 @@ def checkout(request):
         "user" : user,
     }
     return render(request, "checkout.html", context)
+
+def checkout_success(request):
+    return render(request, "checkout_success.html")
