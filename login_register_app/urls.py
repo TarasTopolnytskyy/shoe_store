@@ -13,11 +13,4 @@ urlpatterns = [
 
     path('new_item', views.new_item),
     path('user', views.user_info),
-
-
-
-
-
-    #path('shoe/<int:inventory_id', views.shoe),
-    #path('checkout', views checkout),
 ]
