@@ -12,10 +12,12 @@ urlpatterns = [
     path('log_out', views.log_out),
 
     path('new_item', views.new_item),
-    
+    path('user', views.user_info),
+
+
+
+
+
     #path('shoe/<int:inventory_id', views.shoe),
-    #path('user/<int:user_id', views.user_info),
     #path('checkout', views checkout),
-
-
 ]
