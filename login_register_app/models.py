@@ -69,6 +69,21 @@ class Billing_Address(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class InventoryManager(models.Manager):
+    def basic_validator(self, post_data):
+        errors = {}
+
+        if len(Inventory.objects.filter(item_brand = post_data['item_brand'])) != 0:
+            errors['item_brand'] = 'Item Brand not long enough.'
+
+        if len(Inventory.objects.filter(item_name = post_data['item_name'])) != 0:
+            errors['item_name'] = 'Item Name not long enough.'
+
+        if len(Inventory.objects.filter(condition = post_data['condition'])) != 0:
+            errors['condition'] = 'Conditon must be filled out.'
+
+            return errors
+
 class Inventory(models.Model):
     item_brand = models.CharField(max_length = 255)
     item_name = models.CharField(max_length = 255)
