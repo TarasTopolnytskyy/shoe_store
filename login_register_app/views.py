@@ -7,7 +7,9 @@ def index(request):
     return redirect('/home')
 
 def home(request):
-
+    context = {
+        "user": User.objects.get(id = request.session['user_id'])
+    }
     return render(request, "home.html")
 
 def login_page(request):
