@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>Welcome, {{ request.session.user.first_name }}</h1>
-    <a href="logout">Log Out</a>
+    <a href="/log_out">LOGOUT</a>
     <a href='new_item'>New Item</a>
     <a href="/success">Back</a>
 
@@ -25,9 +25,9 @@
         </tr>
         {% for seller in inventory %}
         <tr>
-            <td>{{item_name.inventory}}</td>
-            <td>{{item_brand.inventory}}</td>
-            <td>{{item_price.inventory}}</td>
+            <td>{{inventory.item_name}}</td>
+            <td>{{inventory.item_brand}}</td>
+            <td>{{inventory.item_price}}</td>
             <td><a href='/{{inventory_id}}'>View</td>
         </tr>
         {% endfor %}
@@ -41,9 +41,9 @@
         </tr>
         {% for buyer in inventory %}
         <tr>
-            <td>{{item_name.inventory}}</td>
-            <td>{{item_brand.inventory}}</td>
-            <td>{{item_price.inventory}}</td>
+            <td>{{inventoryitem_name}}</td>
+            <td>{{inventoryitem_brandy}}</td>
+            <td>{{inventoryitem_price}}</td>
             <td><a href='/{{inventory_id}}'>View</td>
         </tr>
         {% endfor %}
