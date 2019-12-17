@@ -72,11 +72,24 @@ def item_info(request, inventory_id):
     }
     return render(request, "item_info.html", context)
 
+
+
+
+
+
+
 def user_info(request):
-    context={
-        "user" : User.Objects.get(id = request.session['user_id'])
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+        "user" : user
     }
     return render(request, "user_info.html", context)
+
+
+
+
+
+
 
 def new_item(request):
     context = {
