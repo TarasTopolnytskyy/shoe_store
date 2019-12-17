@@ -1,15 +1,13 @@
 from django.shortcuts import render, redirect
 import bcrypt
 from django.contrib import messages
-from login_register_app.models import User, UserManager, Inventory, Shipping_Address, Billing_Address, Shoe, Photo
+from login_register_app.models import User, UserManager, Inventory, Shipping_Address, Billing_Address, Shoe
 
 def index(request):
     return redirect('/home')
 
 def home(request):
-    context = {
-        "user": User.objects.get(id = request.session['user_id'])
-    }
+
     return render(request, "home.html")
 
 def login_page(request):
