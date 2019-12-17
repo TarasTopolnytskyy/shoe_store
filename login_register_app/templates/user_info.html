@@ -11,43 +11,50 @@
 
 </head>
 <body>
-    <h1>Welcome, {{ request.session.user.first_name }}</h1>
-    <a href="/log_out">LOGOUT</a>
-    <a href='new_item'>New Item</a>
-    <a href="/success">Back</a>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome, {{ request.session.user_first_name }}</h1>
+            <div id="user_buttons">
+                <a href='new_item'>SELL</a>
+                <a href="/success">GO BACK</a>
+                <a href="/log_out">LOG OUT</a>
+            </div>
+        </div>
+        <div class="user_history">
+                <h2>The items you've sold.</h2>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Brand</th>
+                        <th>Price</th>
+                    </tr>
+                    {% for seller in inventory %}
+                    <tr>
+                        <td>{{item_name.inventory}}</td>
+                        <td>{{item_brand.inventory}}</td>
+                        <td>{{item_price.inventory}}</td>
+                        <td><a href='/{{inventory_id}}'>View</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                    <h2>The items you've bought.</h2>
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Brand</th>
+                        <th>Price</th>
+                    </tr>
+                    {% for buyer in inventory %}
+                    <tr>
+                        <td>{{item_name.inventory}}</td>
+                        <td>{{item_brand.inventory}}</td>
+                        <td>{{item_price.inventory}}</td>
+                        <td><a href='/{{inventory_id}}'>View</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+        </div>
+    </div>
 
-    <h2>The items you've sold.</h2>
-    <table>
-        <tr>
-            <th>Item</th>
-            <th>Brand</th>
-            <th>Price</th>
-        </tr>
-        {% for seller in inventory %}
-        <tr>
-            <td>{{inventory.item_name}}</td>
-            <td>{{inventory.item_brand}}</td>
-            <td>{{inventory.item_price}}</td>
-            <td><a href='/{{inventory_id}}'>View</td>
-        </tr>
-        {% endfor %}
-    </table>
-        <h2>The items you've bought.</h2>
-    <table>
-        <tr>
-            <th>Item</th>
-            <th>Brand</th>
-            <th>Price</th>
-        </tr>
-        {% for buyer in inventory %}
-        <tr>
-            <td>{{inventoryitem_name}}</td>
-            <td>{{inventoryitem_brandy}}</td>
-            <td>{{inventoryitem_price}}</td>
-            <td><a href='/{{inventory_id}}'>View</td>
-        </tr>
-        {% endfor %}
-    </table>
-    
 </body>
 </html>
