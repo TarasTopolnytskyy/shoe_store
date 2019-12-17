@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to Shoe Store</title> 
+
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <div class="header1">
             <h1>Welcome</h1>
-            <form action='/login_page' methon="POST">
-                <input id="login" type="submit" value="LOGIN">
-            </form>
-            
+            <a href="/login_page">LOGIN</a>
+
         </div>
         <div class="selector">
             

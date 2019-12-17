@@ -2,9 +2,11 @@
     border: 3px solid black;
     margin: 0px auto;
     width: 960px;
-    height: 700px;
+    height: 1100px;
     display: block;
-    /* padding: 20px; */
+    background-image: url("/static/images/bg11.png");
+    background-repeat: no-repeat;
+    background-size: 960px 1100px;
 }
 
 .column{
@@ -13,6 +15,9 @@
     border: 1px solid black;
     padding:30px;
     margin-left:100px;
+    background-image: url("/static/images/loginimg.jpg");
+    background-repeat: no-repeat;
+    background-size: 310px 1000px;
 }
 
 .head{
@@ -25,12 +30,52 @@
     border: 1px solid black;
     padding: 30px;
     margin-left:600px;
-    margin-top:-450px;
+    margin-top:-850px;
+    background-image: url("/static/images/loginimg.jpg");
+    background-repeat: no-repeat;
+    background-size: 260px 310px;
 }
 .header{
     border: 1px solid black;
     padding: 10px;
     display: flex;
+    height:80px;
+    background-image: url("/static/images/loginimg.jpg");
+    background-repeat: no-repeat;
+    background-size: 970px 100px;
+}
+.header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.header a {
+    float:right;
+    display:block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.header1{
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    height:80px;
+    background-image: url("/static/images/loginimg.jpg");
+    background-repeat: no-repeat;
+    background-size: 970px 100px;
+}
+.header1 a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.header1 a {
+    margin-left:700px;
+    display:block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 input#login{
     margin-left:720px;
@@ -45,7 +90,7 @@ input#login{
 .items{
     border:1px solid black;
     width:700px;
-    height:450px;
+    height:850px;
     margin-left:230px;
     margin-top:-300px;
     overflow: scroll;
@@ -57,4 +102,7 @@ input#sell{
 input#log_out{
     margin-left:40px;
     margin-top:30px;
+}
+div#buttons{
+    margin-left:550px;
 }
