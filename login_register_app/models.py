@@ -81,16 +81,12 @@ class Inventory(models.Model):
     bottom_img = models.ImageField(upload_to='images/', null=True)
     left_img = models.ImageField(upload_to='images/', null=True)
     right_img = models.ImageField(upload_to='images/', null=True)
-
-    # condition = models.CharField(max_length = 255)
+    condition = models.CharField(max_length = 255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
     availability = models.BooleanField()
-    buyer = models.ForeignKey(User, related_name="bought", on_delete = models.CASCADE)
+    buyer = models.ForeignKey(User, related_name="bought", on_delete = models.CASCADE, null=True)
     seller = models.ForeignKey(User, related_name="sold", on_delete = models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 class Shoe(models.Model):
     size = models.FloatField()
