@@ -9,5 +9,11 @@ urlpatterns = [
     path('login', views.login),
     path('register', views.register),
     path('success', views.success),
-    path('log_out', views.log_out)
+    path('log_out', views.log_out),
+
+    #path('shoe/<int:inventory_id', views.shoe),
+    #path('user/<int:user_id', views.user_info),
+    #path('checkout', views checkout),
+
+
 ]

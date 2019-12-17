@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Item</title>
+</head>
+<body>
+    <h1>Welcome, {{ request.session.user_first_name }}! Sell an Item!</h1>
+
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}<br>
+        Item Type: <input type="radio" name="item" value="shoe" checked>Shoe<input type="radio" name="item" value="other">Other <br><br>
+        Item Brand: <input type="text" name="brand" value=""><br><br>
+        Item Name: <input type="text" name="name" value=""><br><br>
+        Item Color: <input type="color" name="color" value="color"><br><br>
+        Size: <input type="number" name="size" value=""><br><br>
+        Male or Female or Other:<br> <input type="radio" name="gender" value="male" checked>Male<br><input type="radio" name="gender" value="female">Female<br><input type="radio" name="gender" value="other">Other<br><br>
+        Description: <input type="textfield" name="description" value=""><br><br>
+        Item Picture: <input type="file" name="photo" accept="image/*"><br><br>
+        <input type="submit" name="submit" value="Add Item"> 
+    </form>
+    <form action="cancel" method = "POST">
+        {% csrf_token %}
+        <input type="submit" name="submit" value="Cancel">
+    </form>
+</body>
+</html>

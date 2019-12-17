@@ -19,6 +19,7 @@
         <div class="head">
             <h1>Please Register or Login</h1>
 
+
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -37,6 +38,12 @@
                 <p>First Name: </p><input type="text" name="first_name" value=""> <br>
                 <p>Last Name: </p><input type="text" name="last_name" value=""> <br>
                 <p>Email: </p><input type="email" name="email" value=""> <br>
+                <p>Default Shipping Address:</p><input type="text" name="shipping_address"> <br>
+                <p>City:</p><input type="text" name="shipping_city"> <br>
+                <p>Zip Code:</p><input type="number" name="shipping_zip"> <br>
+                <p>Billing Address:</p><input type="text" name="billing_address"> <br>
+                <p>City:</p><input type="text" name="billing_city"> <br>
+                <p>Zip Code:</p><input type="number" name="billing_zip"> <br>
                 <p>Password: </p>
                 <h5><i>(Passwords must at least 8 characters long)</i></h5><input type="password" name="password"
                     value="">

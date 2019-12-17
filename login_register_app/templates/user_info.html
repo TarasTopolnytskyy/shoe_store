@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Info</title>
+</head>
+<body>
+    <h1>Welcome, {{ request.session.user.first_name }}</h1>
+    <a href="logout">Log Out</a>
+    <a href='new_item'>New Item</a>
+
+    <h2>The items you've sold.</h2>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Brand</th>
+            <th>Price</th>
+        </tr>
+        {% for seller in inventory %}
+        <tr>
+            <td>{{item_name.inventory}}</td>
+            <td>{{item_brand.inventory}}</td>
+            <td>{{item_price.inventory}}</td>
+            <td><a href='/'>View</td>
+        </tr>
+        {% endfor %}
+        <h2>The items you've bought.</h2>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Brand</th>
+            <th>Price</th>
+        </tr>
+        {% for buyer in inventory %}
+        <tr>
+            <td>{{item_name.inventory}}</td>
+            <td>{{item_brand.inventory}}</td>
+            <td>{{item_price.inventory}}</td>
+            <td><a href='/'>View</td>
+        </tr>
+    </table>
+    
+</body>
+</html>

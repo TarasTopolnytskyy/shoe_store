@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shoe</title>
+</head>
+<body>
+    <h1>Hello {{ request.session.user.first_name }} here are the Shoe Details!</h1>
+
+    <h2>Shoe</h2>
+    <p>{{inventory.item_name}}</p>
+
+    <h3>Brand</h3>
+    <p>{{inventory.item_brand}}</p>
+
+    <h3>Size</h3>
+    <p>{{shoe.size}}</p>
+
+    <h3>Color</h3>
+    <p>{{inventory.item_color}}</p>
+
+    <h3>Shoe Picture</h3>
+    <p>{{photo.photo}}</p>
+
+    <h3>Shoe Put on Sale By:</h3>
+    <p>{{inventory.seller.user.first_name}}</p>
+
+    <h3>Shoe Posted</h3>
+    <p>{{inventory.created_at}}</p>
+
+
+</body>
+</html>

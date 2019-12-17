@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import bcrypt
 from django.contrib import messages
-from login_register_app.models import User, UserManager
+from login_register_app.models import User, UserManager, Inventory, Shipping_Address, Billing_Address, Shoe, Photo
 
 def index(request):
     return redirect('/home')
@@ -61,3 +61,39 @@ def log_out(request):
     del request.session['user_email']
     del request.session['user_first_name']
     return redirect("/home")
+
+
+
+
+def item_info(request, inventory_id):
+    context = {
+        "item" : Inventory.objects.get(id = inventory_id),
+        "user" : User.objects.get(id = request.session['user_id'])
+    }
+    return render(request, "item_info.html", context)
+
+def user_info(request):
+    context={
+        "user" : User.Objects.get(id = request.session['user_id'])
+    }
+    return render(request, "user_info.html", context)
+
+def new_item(request):
+    context = {
+        "user" : User.objects.get(id = request.session['user_id'])
+    }
+    return render(request, "new_item.html", context)
+
+def create_item(request):
+    user = User.objects.get(id = request.session['user_id'])
+
+    # Inventory.objects.create(item_brand = , item_name= , item_color = , item_type = , item_type.size = , item_type.sex = , item_photos.inventory_img = , availibaility = True, seller = user)
+
+    return redirect('/home')
+
+def checkout(request):
+    user = User.objects.get(id = request.session['user_id'])
+    context = {
+        "user" : user,
+    }
+    return render(request, "checkout.html", context)
