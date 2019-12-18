@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update User Information</title>
+</head>
+
+<body>
+
+
+
+    <h1>Upate You Info</h1>
+
+    <form action="/update_user" method="POST">
+        {% csrf_token %}
+        <p>First Name: </p><input type="text" name="first_name" value="{{user.first_name}}"> <br>
+        <p>Last Name: </p><input type="text" name="last_name" value="{{user.last_name}}"> <br>
+        <p>Email: </p><input type="email" name="email" value="{{user.email}}"> <br>
+        <p>Shoe Size</p><input type="number" name="shoe_size" min="6" max="17" step=".5" value={{user.shoe_size}}> <br>
+        <p>Shipping Address:</p><input type="text" name="shipping_address"> <br>
+        <p>City:</p><input type="text" name="shipping_city"> <br>
+        <p>Zip Code:</p><input type="text" name="shipping_zip"> <br>
+        <p>Billing Address:</p><input type="text" name="billing_address"> <br>
+        <p>City:</p><input type="text" name="billing_city"> <br>
+        <p>Zip Code:</p><input type="text" name="billing_zip"> <br><br>
+        <input type="submit" name="submit" value="Update Profile">
+    </form>
+
+</body>
+
+</html>
