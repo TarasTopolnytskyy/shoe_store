@@ -31,7 +31,7 @@ def register(request):
 
             password = request.POST['password']
             pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()  
-            User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=pw_hash) 
+            User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], shoe_size= float(request.POST['shoe_size']), email=request.POST['email'], password=pw_hash) 
             
             messages.info(request, "You have successfully created an account. Log in to get started.")
 

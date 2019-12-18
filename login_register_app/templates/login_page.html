@@ -37,6 +37,7 @@
                 {% csrf_token %}
                 <p>First Name: </p><input type="text" name="first_name" value=""> <br>
                 <p>Last Name: </p><input type="text" name="last_name" value=""> <br>
+                <p>Shoe Size: </p><input type="number" name="shoe_size" min="6" max="17" step=".5" value=''> <br>
                 <p>Email: </p><input type="email" name="email" value=""> <br>
                 <p>Password: </p>
                 <h5><i>(Passwords must at least 8 characters long)</i></h5><input type="password" name="password"
