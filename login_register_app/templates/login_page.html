@@ -30,31 +30,33 @@
         </div>
 
         <div class="column">
-            <h2>New User?</h2>
-            <h3>Create Account</h3>
+            <h2 class="text">New User?</h2>
+            <h3 class="text">Create Account</h3>
 
             <form action="/register" method="POST">
                 {% csrf_token %}
-                <p>First Name: </p><input type="text" name="first_name" value=""> <br>
-                <p>Last Name: </p><input type="text" name="last_name" value=""> <br>
-                <p>Shoe Size: </p><input type="number" name="shoe_size" min="6" max="17" step=".5" value=''> <br>
-                <p>Email: </p><input type="email" name="email" value=""> <br>
-                <p>Password: </p>
+
+                <p class="text">First Name: </p><input type="text" name="first_name" value=""> <br>
+                <p class="text">Last Name: </p><input type="text" name="last_name" value=""> <br>
+                <p class="text">Email: </p><input type="email" name="email" value=""> <br>
+                <p class="text">Shoe Size: </p><input type="number" name="shoe_size" min="6" max="17" step=".5" value=''> <br>
+                <p class="text">Password: </p>
                 <h5><i>(Passwords must at least 8 characters long)</i></h5><input type="password" name="password"
                     value="">
-                <p>Confirm Password: </p><input type="password" name="confirm_password" value=""> <br><br>
+                <p class="text">Confirm Password: </p><input type="password" name="confirm_password" value=""> <br>
                 <input class="button" type="submit" name="submit" value="Create Account">
             </form>
         </div>
 
-        <div class="column">
-            <h2>Existing User?</h2>
-            <h3>Sign In</h3>
+        <div class="login">
+            <h2 class="text">Existing User?</h2>
+            <h3 class="text">Sign In</h3>
 
             <form action="/login" method="POST">
                 {% csrf_token %}
-                <p>Email: </p><input type="email" name="email" value=""> <br>
-                <p>Password: </p><input type="password" name="password" value=""> <br><br>
+                <p class="text">Email: </p><input type="email" name="email" value=""> <br>
+                <p class="text">Password: </p><input type="password" name="password" value=""> <br>
+
                 <input class="button" type="submit" name="submit" value="Log In">
             </form>
         </div>
