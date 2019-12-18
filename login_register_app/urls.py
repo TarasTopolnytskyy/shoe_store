@@ -15,11 +15,15 @@ urlpatterns = [
 
     path('create_item', views.create_item),
     path('user/edit', views.edit_user),
-    path('update_user', views.update_user)
+    path('update_user', views.update_user),
 
 
 
 
-    #path('shoe/<int:inventory_id', views.shoe),
+    path('shoe/<int:inventory_id>', views.item_info),
+
+    path('charge/', views.charge, name='charge'),
+    path('', views.HomePageView.as_view(), name='home')
+    
     #path('checkout', views checkout),
 ]

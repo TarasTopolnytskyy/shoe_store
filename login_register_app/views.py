@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 import bcrypt
 from django.contrib import messages
-from login_register_app.models import User, UserManager, Inventory, Shipping_Address, Billing_Address, Shoe
+from login_register_app.models import User, UserManager, Inventory
 
 
+from django.conf import settings 
+from django.views.generic.base import TemplateView
+import stripe
 
-
+stripe.api_key = settings.STRIPE_SECRET_KEY 
 
 def index(request):
     return redirect('/home')
@@ -26,7 +29,6 @@ def register(request):
             return redirect('/login_page')
         else:
 
-            # messages.info(request, "You have successfully registered.")   YOU THIS FIRST TO CHECK THAT ALL THE VALIDATIONS WORK
             password = request.POST['password']
             pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()  
             User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=pw_hash) 
@@ -58,7 +60,11 @@ def success(request):
         messages.error(request, 'Please log-in')
         return redirect('/home')
     else:
-        return render(request, 'success.html')
+        context ={
+            "items" : Inventory.objects.all()
+        }
+
+        return render(request, 'success.html', context)
 
 def log_out(request):
     del request.session['user_id']
@@ -75,8 +81,10 @@ def item_info(request, inventory_id):
 
 def user_info(request):
     user = User.objects.get(id=request.session['user_id'])
+    items = Inventory.objects.all()
     context = {
-        "user" : user
+        "user" : user,
+        "items" : items
     }
     return render(request, "user_info.html", context)
 
@@ -94,11 +102,13 @@ def update_user(request):
     user.last_name = request.POST['last_name']
     user.email = request.POST['email']
     user.shoe_size = request.POST['shoe_size']
+    user.shipping_address = request.POST['shipping_address']
+    user.shipping_city = request.POST['shipping_city']
+    user.shipping_zip = request.POST['shipping_zip']
+    user.billing_address = request.POST['billing_address']
+    user.billing_city = request.POST['billing_city']
+    user.billing_zip = request.POST['billing_zip']
     user.save()
-    Shipping_Address.objects.create(shipping_address = request.POST("shipping_address"), shipping_city = request.POST("shipping_city"), shipping_zip = request.POST("shipping_zip"), user = user)
-
-    # Billing_Address.objects.create(billing_address = request.POST("billing_address"), billing_city = request.POST("billing_city"), billing_zip = request.POST("billing_zip"), user = user)
-
     return redirect('/user')
 
 
@@ -115,7 +125,6 @@ def new_item(request):
 def create_item(request):
     user = User.objects.get(id = request.session['user_id'])
     Inventory.objects.create(
-        item_type= request.POST["item"],
         item_brand = request.POST["brand"], 
         item_name= request.POST["name"], 
         item_primary_color = request.POST["color_one"], 
@@ -128,12 +137,11 @@ def create_item(request):
         left_img = request.POST["left_photo"], 
         right_img = request.POST["right_photo"], 
         condition = request.POST["condition"],
-        availibaility = True, 
         seller = user,
-        # item_size = request.POST["size"], 
-        # item_sex = request.POST["gender"]
+        item_size = request.POST["item_size"], 
+        item_gender = request.POST["item_gender"]
     )
-    return redirect('/home')
+    return redirect('/success')
 
 def checkout(request):
     user = User.objects.get(id = request.session['user_id'])
@@ -144,3 +152,22 @@ def checkout(request):
 
 def checkout_success(request):
     return render(request, "checkout_success.html")
+
+
+class HomePageView(TemplateView):
+    template_name = 'touch.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['key'] = settings.STRIPE_PUBLISHABLE_KEY
+        return context
+
+def charge(request):
+    if request.method == 'POST':
+        charge = stripe.Charge.create(
+            amount=500,
+            currency='usd',
+            description='A Django charge',
+            source=request.POST['stripeToken']
+        )
+        return render(request, 'charge.html')

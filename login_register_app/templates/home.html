@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome to Shoe Store</title> 
+    <title>Welcome to Shoe Store</title>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -21,12 +23,21 @@
 
 
         <div class="selector">
-            
+
         </div>
         <div class="items">
-
+            {% for item in items %}
+                <a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a>
+                <p>Size: {{item.item_size}}</p>
+                <p>Price: {{item.item_price}}</p>
+                {% if item.availability == True%}
+                <p>For Sale</p>
+                {% endif %}
+                <br><br>
+            {% endfor %}
         </div>
 
 
 </body>
+
 </html>
