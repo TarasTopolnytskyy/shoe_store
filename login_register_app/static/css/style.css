@@ -1,3 +1,9 @@
+*{
+    vertical-align: top;
+    box-sizing:border-box;
+    font-family: sans-serif;
+}
+
 .container{
     border: 3px solid black;
     margin: 0px auto;
@@ -25,6 +31,7 @@
     display: block;
     text-align: center;
 }
+
 .login{
     /* display: inline-block; */
     width: 160px;
@@ -37,6 +44,7 @@
     background-repeat: no-repeat;
     background-size: 260px 330px;
 }
+
 .header{
     border: 1px solid black;
     padding: 10px;
@@ -45,19 +53,24 @@
     background-image: url("/static/images/loginimg.jpg");
     background-repeat: no-repeat;
     background-size: 970px 100px;
+    color:white
 }
+
 .header a:hover {
     background-color: black;
     color: yellow;
     border-radius: 10px;
 }
+
 .header a {
     display:inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    color: white
 }
+
 .header1{
     border: 1px solid black;
     padding: 10px;
@@ -67,11 +80,13 @@
     background-repeat: no-repeat;
     background-size: 970px 100px;
 }
+
 .header1 a:hover {
     background-color: black;
     color:yellow;
     border-radius: 10px;
 }
+
 .header1 a {
     margin-left:700px;
     display:block;
@@ -80,38 +95,46 @@
     padding: 14px 16px;
     text-decoration: none;
 }
+
 input#login{
     margin-left:720px;
     margin-top:30px;
 }
+
 .selector{
     border:1px solid black;
     margin-top:80px;
     height:300px;
     width:200px;
 }
+
 .items{
     border:1px solid black;
     width:700px;
     height:850px;
     margin-left:230px;
     margin-top:-300px;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
+
 input#sell{
     margin-left:550px;
     margin-top:30px;
 }
+
 input#log_out{
     margin-left:40px;
     margin-top:30px;
 }
+
 div#buttons{
     margin-left:420px;
 }
+
 div#sell_buttons{
     margin-left:300px;
 }
+
 .sell_container{
     margin-left:260px;
     height:900px;
@@ -122,9 +145,11 @@ div#sell_buttons{
     background-repeat: no-repeat;
     background-size: 450px 940px;
 }
+
 div#user_buttons{
     margin-left:420px;
 }
+
 .user_history{
     border: 1px solid black;
     display:inline-block;

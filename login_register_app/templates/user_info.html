@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,55 @@
     <title>User Info</title>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">   
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="text">Welcome, {{ request.session.user_first_name }}</h1>
+
+            <h1 class="text">Shoe Store</h1>
+
             <div id="user_buttons">
+                <a href="/success">BACK</a>
                 <a href='new_item'>SELL</a>
-                <a href="/success">GO BACK</a>
                 <a href="/log_out">LOG OUT</a>
             </div>
         </div>
-        <div class="user_history">
+        <div class="column">
+
+            <h2>User Information</h2>
+            <p>First Name: </p>
+            <p>{{user.first_name}}</p>
+            <p>Last Name: </p>
+            <p>{{user.last_name}}</p>
+            <p>Email: </p>
+            <p>{{user.email}}</p>
+            <p>Shoe Size: </p>
+            <p>{{user.shoe_size}}</p>
+
+        </div>
+        <div class="column">
+            <p><b>Shipping Address</b></p>
+            <p>{{user.shipping_address}}</p>
+            <p>{{user.shipping_city}}</p>
+            <p>{{user.shipping_zip}}</p>
+
+            <p><b>Billing Address</b></p>
+            <p>{{user.billing_address}}</p>
+            <p>{{user.billing_city}}</p>
+            <p>{{user.billing_zip}}</p>
+        </div>
+
+            <br>
+
+            <a href="/user/edit">Update Your Profile</a>
+
+            <br>
+            <br>
+
+            <div class="user_history">
                 <h2>The items you've sold.</h2>
                 <div class="tables">
                     <table>
@@ -57,8 +93,9 @@
                             {% endfor %}
                     </table>
                 </div>
+
         </div>
-    </div>
 
 </body>
+
 </html>

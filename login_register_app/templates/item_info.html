@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,39 +8,67 @@
     <title>Shoe</title>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">   
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
+
 <body>
-    
-    <h1>Hello {{ request.session.user.first_name }} here are the Shoe Details!</h1>
+    <div class="container">
+        <div class="header">
+            <h1>Shoe Store</h1>
+            <div id="buttons">
 
-    <a href="/log_out">LOGOUT</a>
-    
-    <h2>Shoe</h2>
-    <p>{{inventory.item_name}}</p>
+                <a href="/new_item">SELL</a>
+                <a href="/user">{{request.session.user_first_name}}</a>
+                <a href="/log_out">LOG OUT</a>
+            </div>
+        </div>
 
-    <h3>Brand</h3>
-    <p>{{inventory.item_brand}}</p>
+        <h1>{{item.item_brand}} {{item.item_name}}</h1>
 
-    <h3>Condition</h3>
-    <p>{{inventory.condition}}</p>
+        <div class="column">
+            <h3>Brand</h3>
+            <p>{{item.item_brand}}</p>
 
-    <h3>Size</h3>
-    <p>{{shoe.size}}</p>
+            <h2>Shoe</h2>
+            <p>{{item.item_name}}</p>
 
-    <h3>Color</h3>
-    <p>{{inventory.item_color}}</p>
+            <h3>Condition</h3>
+            <p>{{item.condition}}</p>
 
-    <h3>Shoe Picture</h3>
-    <p>{{photo.photo}}</p>
+            <h3>Size</h3>
+            <p>{{item.item_size}}</p>
 
-    <h3>Shoe Put on Sale By:</h3>
-    <p>{{inventory.seller.user.first_name}}</p>
-
-    <h3>Shoe Posted</h3>
-    <p>{{inventory.created_at}}</p>
+            <h3>Color</h3>
+            <p>{{item.item_primary_color}}/{{item.item_secondary_color}}</p>
 
 
+            <h3>Shoe Put on Sale By:</h3>
+            <p>{{item.seller.first_name}} {{item.seller.last_name}}</p>
+
+            <h3>Posted On:</h3>
+            <p>{{item.created_at}}</p>
+        </div>
+
+        <div class="column">
+            <h3>Shoe Picture</h3>
+            <img src="{{item.front_img}}">
+            <img src="{{item.back_img}}">
+            <img src="{{item.top_img}}">
+            <img src="{{item.bottom_img}}">
+            <img src="{{item.left_img}}">
+            <img src="{{item.right_img}}">
+
+        </div>
+
+        <div class="buy_button">
+            <form action="{% url 'charge' %}" method="post">
+                {% csrf_token %}
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ key }}"
+                    data-description="A Django Charge" data-amount="500" data-locale="auto"></script>
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>
