@@ -31,47 +31,33 @@ class UserManager(models.Manager):
 
         return errors
 
-
 class User(models.Model):
     first_name = models.CharField(max_length = 255)
     last_name = models.CharField(max_length = 255)
     email = models.CharField(max_length = 320)
-    shoe_size = models.FloatField(null=True)
     password = models.CharField(max_length = 60)
+    shoe_size = models.FloatField(default="", null=True)
+    shipping_address = models.CharField(max_length = 255, default="", null=True)
+    shipping_city = models.CharField(max_length = 255, default="", null=True)
+    shipping_zip = models.IntegerField(default="", null=True)
+    billing_address = models.CharField(max_length = 255, default="", null=True)
+    billing_city = models.CharField(max_length = 255, default="", null=True)
+    billing_zip = models.IntegerField(default="", null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
-class Shipping_Address(models.Model):
-    shipping_address = models.CharField(max_length = 255, null=True)
-    shipping_city = models.CharField(max_length = 255, null=True)
-    shipping_zip = models.IntegerField(null=True)
-    user = models.ForeignKey(User, related_name="shipping_info", on_delete = models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class Billing_Address(models.Model):
-    billing_address = models.CharField(max_length = 255, null=True)
-    billing_city = models.CharField(max_length = 255, null=True)
-    billing_zip = models.IntegerField(null=True)
-    user = models.ForeignKey(User, related_name="billing_address", on_delete = models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 class InventoryManager(models.Manager):
     def basic_validator(self, post_data):
         errors = {}
-
         if len(Inventory.objects.filter(item_brand = post_data['item_brand'])) != 0:
             errors['item_brand'] = 'Item Brand not long enough.'
-
         if len(Inventory.objects.filter(item_name = post_data['item_name'])) != 0:
             errors['item_name'] = 'Item Name not long enough.'
-
         if len(Inventory.objects.filter(condition = post_data['condition'])) != 0:
             errors['condition'] = 'Conditon must be filled out.'
-
-            return errors
+        return errors
 
 class Inventory(models.Model):
     item_brand = models.CharField(max_length = 255)
@@ -86,19 +72,13 @@ class Inventory(models.Model):
     left_img = models.ImageField(upload_to='images/', null=True)
     right_img = models.ImageField(upload_to='images/', null=True)
     condition = models.CharField(max_length = 255)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    availability = models.BooleanField()
+    item_size = models.FloatField()
+    item_gender = models.CharField(max_length = 255)
+    availability = models.BooleanField(default=True)
     buyer = models.ForeignKey(User, related_name="bought", on_delete = models.CASCADE, null=True)
     seller = models.ForeignKey(User, related_name="sold", on_delete = models.CASCADE)
-
-class Shoe(models.Model):
-    item_size = models.FloatField()
-    item_sex = models.CharField(max_length = 255)
-    item_info = models.ForeignKey(Inventory, related_name="item_type", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
 
 
 

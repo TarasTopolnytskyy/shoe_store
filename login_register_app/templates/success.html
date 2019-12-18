@@ -15,10 +15,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Welcome, {{request.session.user_first_name}}</h1>
+            <h1>Shoe Store</h1>
             <div id="buttons">
+
                 <a href="/new_item">SELL</a>
-                <a href="/user">ACCOUNT</a>
+                <a href="/user">{{request.session.user_first_name}}</a>
                 <a href="/log_out">LOG OUT</a> 
             </div>
         </div>
@@ -42,7 +43,15 @@
 
         </div>
         <div class="items">
-
+            {% for item in items %}
+                <a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a>
+                <p>Size: {{item.item_size}}</p>
+                <p>Price: {{item.item_price}}</p>
+                {% if item.availability == True%}
+                <p>For Sale</p>
+                {% endif %}
+                <br><br>
+            {% endfor %}
         </div>
     </div>
 </body>

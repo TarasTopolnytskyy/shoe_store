@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,44 +8,53 @@
     <title>User Info</title>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">   
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <h1>Welcome, {{ request.session.user_first_name }}</h1>
+            <h1>Shoe Store</h1>
             <div id="user_buttons">
+                <a href="/success">BACK</a>
                 <a href='new_item'>SELL</a>
-                <a href="/success">GO BACK</a>
                 <a href="/log_out">LOG OUT</a>
             </div>
         </div>
+        <div class="column">
 
-        <p>First Name: </p><p>{{user.first_name}}</p>
-        <p>Last Name: </p><p>{{user.last_name}}</p>
-        <p>Email: </p><p>{{user.email}}</p>
-        <p>Shoe Size: </p><p>{{user.shoe_size}}</p>
+            <h2>User Information</h2>
+            <p>First Name: </p>
+            <p>{{user.first_name}}</p>
+            <p>Last Name: </p>
+            <p>{{user.last_name}}</p>
+            <p>Email: </p>
+            <p>{{user.email}}</p>
+            <p>Shoe Size: </p>
+            <p>{{user.shoe_size}}</p>
 
-        <p><b>Shipping Address</b></p>
-        <p>{{user.shipping_info.shipping_address}}</p>
-        <p>{{user.shipping_info.shipping_city}}</p>
-        <p>{{user.shipping_info.shipping_zip}}</p>
+        </div>
+        <div class="column">
+            <p><b>Shipping Address</b></p>
+            <p>{{user.shipping_address}}</p>
+            <p>{{user.shipping_city}}</p>
+            <p>{{user.shipping_zip}}</p>
 
-        <p><b>Billing Address</b></p>
-        <p>{{user.billing_address.billing_address}}</p>
-        <p>{{user.billing_address.billing_city}}</p>
-        <p>{{user.billing_address.billing_zip}}</p>
+            <p><b>Billing Address</b></p>
+            <p>{{user.billing_address}}</p>
+            <p>{{user.billing_city}}</p>
+            <p>{{user.billing_zip}}</p>
+        </div>
 
+            <br>
 
-        <br>
+            <a href="/user/edit">Update Your Profile</a>
 
-        <a href="/user/edit">Update Your Profile</a>
+            <br>
+            <br>
 
-        <br>
-        <br>
-
-        <div class="user_history">
+            <div class="user_history">
                 <h2>The items you've sold.</h2>
                 <table>
                     <tr>
@@ -52,16 +62,24 @@
                         <th>Brand</th>
                         <th>Price</th>
                     </tr>
-                    {% for seller in inventory %}
+
+                    {% if items.seller.id == request.session.user_id %}
+                    {% for item in items %}
                     <tr>
-                        <td>{{item_name.inventory}}</td>
-                        <td>{{item_brand.inventory}}</td>
-                        <td>{{item_price.inventory}}</td>
-                        <td><a href='/{{inventory_id}}'>View</td>
+                        <td>{{item.item_brand}}</td>
+                        <td>{{item.item_name}}</td>
+                        <td>{{item.item_price}}</td>
+                        <td><a href='/shoe/{{item.id}}'>View</td>
                     </tr>
                     {% endfor %}
+                    {% endif %}
+
                 </table>
-                    <h2>The items you've bought.</h2>
+
+
+
+
+                <h2>The items you've bought.</h2>
                 <table>
                     <tr>
                         <th>Item</th>
@@ -77,8 +95,9 @@
                     </tr>
                     {% endfor %}
                 </table>
+            </div>
         </div>
-    </div>
 
 </body>
+
 </html>

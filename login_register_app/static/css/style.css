@@ -110,7 +110,7 @@ input#login{
     height:850px;
     margin-left:230px;
     margin-top:-300px;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 
 input#sell{
