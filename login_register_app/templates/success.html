@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Welcome, {{request.session.user_first_name}}</h1>
+            <h1 class="text">Welcome, {{request.session.user_first_name}}</h1>
             <div id="buttons">
                 <a href="/new_item">SELL</a>
                 <a href="/user">ACCOUNT</a>
@@ -23,6 +23,13 @@
             </div>
         </div>
         <div class="selector">
+            <select class="select-css">
+                <option>This is a native select element</option>
+                <option>Apples</option>
+                <option>Bananas</option>
+                <option>Grapes</option>
+                <option>Oranges</option>
+            </select>
             <p>Select the size:</p>
             <select>
                 <option value="All">ALL</option>
