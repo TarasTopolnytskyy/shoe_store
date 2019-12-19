@@ -22,7 +22,7 @@
 
                 <a href="/new_item">SELL</a>
                 <a href="/user">{{request.session.user_first_name}}</a>
-                <a href="/log_out">LOG OUT</a> 
+                <a href="/log_out">LOG OUT</a>
             </div>
         </div>
         <div class="selector">
@@ -52,14 +52,18 @@
 
         </div>
         <div class="items">
-            {% for item in items %}
-                <a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a>
+            {% for item in items reversed%}
+            <div class="column">
+                <a href="/shoe/{{item.id}}"><b>{{item.item_brand}} {{item.item_name}}</b></a>
+                <img src='{{item.front_img.url}}'>
                 <p>Size: {{item.item_size}}</p>
                 <p>Price: {{item.item_price}}</p>
+                <p>Date Added: {{item.created_at}}</p>
                 {% if item.availability == True%}
-                <p>For Sale</p>
+                <p><b>For Sale</b></p>
                 {% endif %}
-                <br><br>
+            </div>
+            <br><br>
             {% endfor %}
         </div>
     </div>

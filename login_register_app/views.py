@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 import bcrypt
 from django.contrib import messages
 from login_register_app.models import User, UserManager, Inventory
-
-
 from django.conf import settings 
 from django.views.generic.base import TemplateView
 import stripe
@@ -73,15 +71,20 @@ def log_out(request):
     return redirect("/home")
 
 def item_info(request, inventory_id):
+    item = Inventory.objects.get(id = inventory_id)
+    price = int((item.item_price)*100)
     context = {
-        "item" : Inventory.objects.get(id = inventory_id),
-        "user" : User.objects.get(id = request.session['user_id'])
+        "item" : item,
+        "user" : User.objects.get(id = request.session['user_id']),
+        "price": price
     }
     return render(request, "item_info.html", context)
 
 def user_info(request):
     user = User.objects.get(id=request.session['user_id'])
     items = Inventory.objects.all()
+
+
     context = {
         "user" : user,
         "items" : items
@@ -112,10 +115,6 @@ def update_user(request):
     return redirect('/user')
 
 
-
-
-
-
 def new_item(request):
     context = {
         "user" : User.objects.get(id = request.session['user_id'])
@@ -130,12 +129,12 @@ def create_item(request):
         item_primary_color = request.POST["color_one"], 
         item_secondary_color = request.POST["color_two"], 
         item_price = request.POST['price'], 
-        front_img = request.POST["front_photo"], 
-        back_img = request.POST["back_photo"], 
-        top_img = request.POST["top_photo"], 
-        bottom_img = request.POST["bottom_photo"], 
-        left_img = request.POST["left_photo"], 
-        right_img = request.POST["right_photo"], 
+        front_img = request.FILES["front_photo"], 
+        back_img = request.FILES["back_photo"], 
+        top_img = request.FILES["top_photo"], 
+        bottom_img = request.FILES["bottom_photo"], 
+        left_img = request.FILES["left_photo"], 
+        right_img = request.FILES["right_photo"], 
         condition = request.POST["condition"],
         seller = user,
         item_size = request.POST["item_size"], 
@@ -155,7 +154,7 @@ def checkout_success(request):
 
 
 class HomePageView(TemplateView):
-    template_name = 'touch.html'
+    template_name = 'charge.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -171,3 +170,9 @@ def charge(request):
             source=request.POST['stripeToken']
         )
         return render(request, 'charge.html')
+
+    
+def delete(request, inventory_id):
+    item = Inventory.objects.get(id = inventory_id)
+    item.delete()
+    return redirect('/success')

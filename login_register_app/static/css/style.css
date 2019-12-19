@@ -18,13 +18,14 @@
 .column{
     display: inline-block;
     width: 250px;
-    height:930px;
+    height:auto;
     border: 1px solid black;
     padding:30px;
     margin-left:120px;
     background-image: url("/static/images/loginimg.jpg");
     background-repeat: no-repeat;
     background-size: 310px 1000px;
+    color: white;
 }
 
 .head{

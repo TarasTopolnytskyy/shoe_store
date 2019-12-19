@@ -37,7 +37,7 @@
         <div class="sell_container">
 
             <h2>List A New Item</h2>
-            <form action="/create_item" method="POST">
+            <form action="/create_item" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}<br>
                 Item Brand: <input type="text" name="brand" value=""><br><br>
                 Item Name: <input type="text" name="name" value=""><br><br>
