@@ -120,9 +120,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STRIPE_SECRET_KEY = 'sk_test_tTXJQrYCtoUxGvVBnINa6lkx00TmuN9DDK'
+STRIPE_SECRET_KEY = 'sk_test_OiHCLCg36ynlfxfZTZdotkrP00jgCZmbwd'
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_wE2iGd1egjyY2jFjlsgkP4i800rjhLCgeF'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_PpNzgy2G1dBljP5vC25hCsR200IWDhF89Q'
 
 MEDIA_ROOT= '/Users/stant/Desktop/shoe_store_images/media/' #this should be set to a folder on your computer
 

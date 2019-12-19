@@ -6,7 +6,15 @@ from django.conf import settings
 from django.views.generic.base import TemplateView
 import stripe
 
-stripe.api_key = settings.STRIPE_SECRET_KEY 
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+class HomePageView(TemplateView):
+    template_name = 'item_info.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['key'] = settings.STRIPE_PUBLISHABLE_KEY
+        return context
 
 def index(request):
     return redirect('/home')
@@ -76,7 +84,8 @@ def item_info(request, inventory_id):
     context = {
         "item" : item,
         "user" : User.objects.get(id = request.session['user_id']),
-        "price": price
+        "price": price,
+        "key" : settings.STRIPE_PUBLISHABLE_KEY
     }
     return render(request, "item_info.html", context)
 
@@ -152,15 +161,6 @@ def checkout(request):
 def checkout_success(request):
     return render(request, "checkout_success.html")
 
-
-class HomePageView(TemplateView):
-    template_name = 'charge.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['key'] = settings.STRIPE_PUBLISHABLE_KEY
-        return context
-
 def charge(request):
     if request.method == 'POST':
         charge = stripe.Charge.create(
@@ -169,6 +169,8 @@ def charge(request):
             description='A Django charge',
             source=request.POST['stripeToken']
         )
+        
+
         return render(request, 'charge.html')
 
     
