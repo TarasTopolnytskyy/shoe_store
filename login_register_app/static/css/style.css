@@ -236,6 +236,7 @@ input.button{
 .select-css option {
     font-weight:normal;
 }
+
 input.sell_input {
     width: 350px;
     padding: 5px;
@@ -307,6 +308,7 @@ input.button_sell{
     height: 350px;
     border-radius: 10px;
     display: inline-block;
+
     margin:30px;
     padding: 10px;
 }
@@ -349,3 +351,4 @@ div#info_description{
 div#remove_button{
     margin-top:100px;
 }
+

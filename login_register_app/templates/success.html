@@ -16,7 +16,9 @@
     <div class="container">
         <div class="header">
 
-            <h1 class="text">Shoe Store</h1>
+            <a href="/success">
+                <h1 class="text">Shoe Store</h1>
+            </a>
 
             <div id="buttons">
 
@@ -29,17 +31,9 @@
             <p>Select the size:</p>
             <select>
                 <option value="All">ALL</option>
-                <option value="All">14</option>
-                <option value="All">13</option>
-                <option value="All">12</option>
-                <option value="All">11</option>
-                <option value="All">10</option>
-                <option value="All">9</option>
-                <option value="All">8</option>
-                <option value="All">7</option>
-                <option value="All">6</option>
-                <option value="All">5</option>
-                <option value="All">4</option>
+                {% for item in items %}
+                <option value="{{items.item_size}}">{{item.item_size}}</option>
+                {%endfor%}
             </select>
             </form>
 
@@ -52,11 +46,15 @@
                     <h1><a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a></h1>
                     <p>Size: {{item.item_size}}</p>
                     <p>Price: {{item.item_price}}</p>
+
                 {% if item.availability == True%}
-                    <p>For Sale</p>
+                <p>For Sale</p>
+                {%else%}
+                <p>Sold</p>
                 {% endif %}
                     <br><br>
                     </div>
+
 
             {% endfor %}
 

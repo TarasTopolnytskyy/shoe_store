@@ -6,14 +6,24 @@ from django.conf import settings
 from django.views.generic.base import TemplateView
 import stripe
 
-stripe.api_key = settings.STRIPE_SECRET_KEY 
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+class HomePageView(TemplateView):
+    template_name = 'item_info.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['key'] = settings.STRIPE_PUBLISHABLE_KEY
+        return context
 
 def index(request):
     return redirect('/home')
 
 def home(request):
-
-    return render(request, "home.html")
+    context ={
+        "items" : Inventory.objects.all()
+    }
+    return render(request, "home.html", context)
 
 def login_page(request):
     return render(request, 'login_page.html')
@@ -76,14 +86,15 @@ def item_info(request, inventory_id):
     context = {
         "item" : item,
         "user" : User.objects.get(id = request.session['user_id']),
-        "price": price
+        "price": price,
+        "key" : settings.STRIPE_PUBLISHABLE_KEY
     }
+    
     return render(request, "item_info.html", context)
 
 def user_info(request):
     user = User.objects.get(id=request.session['user_id'])
     items = Inventory.objects.all()
-
 
     context = {
         "user" : user,
@@ -152,15 +163,6 @@ def checkout(request):
 def checkout_success(request):
     return render(request, "checkout_success.html")
 
-
-class HomePageView(TemplateView):
-    template_name = 'charge.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['key'] = settings.STRIPE_PUBLISHABLE_KEY
-        return context
-
 def charge(request):
     if request.method == 'POST':
         charge = stripe.Charge.create(
@@ -171,7 +173,6 @@ def charge(request):
         )
         return render(request, 'charge.html')
 
-    
 def delete(request, inventory_id):
     item = Inventory.objects.get(id = inventory_id)
     item.delete()
