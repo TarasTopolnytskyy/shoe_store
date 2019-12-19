@@ -22,7 +22,7 @@
 
                 <a href="/new_item">SELL</a>
                 <a href="/user">{{request.session.user_first_name}}</a>
-                <a href="/log_out">LOG OUT</a> 
+                <a href="/log_out">LOG OUT</a>
             </div>
         </div>
         <div class="selector">
@@ -56,8 +56,10 @@
                     <p>For Sale</p>
                 {% endif %}
                     <br><br>
+                      </div>
+
                 {% endfor %}
-            </div>
+
         </div>
     </div>
 </body>
