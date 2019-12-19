@@ -235,6 +235,7 @@ input.button{
 .select-css option {
     font-weight:normal;
 }
+
 input.sell_input {
     width: 350px;
     padding: 5px;
@@ -305,3 +306,4 @@ input.button_sell{
     display: inline-block;
     display: block;
 }
+

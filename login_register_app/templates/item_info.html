@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Shoe Store</h1>
+            <a href="/success"><h1 class="text">Shoe Store</h1></a>
             <div id="buttons">
 
                 <a href="/new_item">SELL</a>
@@ -86,7 +86,7 @@
 
             <form action="{% url 'charge' %}" method="post">
                 {% csrf_token %}
-                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ key }}"
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{key}}"
                     data-description="A Django Charge" data-amount="{{price}}" data-locale="auto"></script>
             </form>
         </div>

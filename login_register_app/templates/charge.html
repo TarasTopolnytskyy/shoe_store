@@ -8,9 +8,14 @@
 </head>
 <body>
     
+    <div id="buttons">
 
+        <a href="/new_item">SELL</a>
+        <a href="/user">{{request.session.user_first_name}}</a>
+        <a href="/log_out">LOG OUT</a>
+    </div>
     <h2>Congratulations</h2>
-    <h3>Your order had been successfully completed</h3>
+    <h3>Your order had been successfully completed Your order</h3>
     <h2>Thanks, you paid <strong>{{item.item_price}}</strong>!</h2>
 </body>
 </html>
