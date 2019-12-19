@@ -124,6 +124,6 @@ STRIPE_SECRET_KEY = 'sk_test_OiHCLCg36ynlfxfZTZdotkrP00jgCZmbwd'
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_PpNzgy2G1dBljP5vC25hCsR200IWDhF89Q'
 
-MEDIA_ROOT= '/Users/stant/Desktop/shoe_store_images/media/' #this should be set to a folder on your computer
+MEDIA_ROOT= '/Users/oxox/Desktop/shoe_store' #this should be set to a folder on your computer
 
 MEDIA_URL= '/media/' #this is going to get appended in your project-level urls.py file
