@@ -48,17 +48,17 @@
             {% for item in items reversed %}
 
             <div class="listed_for_sale">
-                
-                    <a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a>
+                    <img src='{{item.front_img.url}}' width="250" height="150">
+                    <h1><a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a></h1>
                     <p>Size: {{item.item_size}}</p>
                     <p>Price: {{item.item_price}}</p>
                 {% if item.availability == True%}
                     <p>For Sale</p>
                 {% endif %}
                     <br><br>
-                      </div>
+                    </div>
 
-                {% endfor %}
+            {% endfor %}
 
         </div>
     </div>
