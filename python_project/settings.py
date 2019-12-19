@@ -120,10 +120,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT= 'C:/Users/stant/Desktop/shoe_store_images' #this should be set to a folder on your computer
-
-MEDIA_URL = '/images/' #this is going to get appended in your project-level urls.py file
-
 STRIPE_SECRET_KEY = 'sk_test_tTXJQrYCtoUxGvVBnINa6lkx00TmuN9DDK'
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_wE2iGd1egjyY2jFjlsgkP4i800rjhLCgeF'
+
+MEDIA_ROOT= '/Users/stant/Desktop/shoe_store_images/media/' #this should be set to a folder on your computer
+
+MEDIA_URL= '/media/' #this is going to get appended in your project-level urls.py file

@@ -43,29 +43,51 @@
             <p>{{item.item_primary_color}}/{{item.item_secondary_color}}</p>
 
 
-            <h3>Shoe Put on Sale By:</h3>
+            <h3>Shoe Seller:</h3>
             <p>{{item.seller.first_name}} {{item.seller.last_name}}</p>
 
             <h3>Posted On:</h3>
             <p>{{item.created_at}}</p>
+
+            <h3>Price</h3>
+            <p>${{item.item_price}}</p>
+
+            <a href="/shoe/{{item.id}}/delete">Remove Item From Sale</a>
+
         </div>
 
         <div class="column">
             <h3>Shoe Picture</h3>
-            <img src="{{item.front_img}}">
-            <img src="{{item.back_img}}">
-            <img src="{{item.top_img}}">
-            <img src="{{item.bottom_img}}">
-            <img src="{{item.left_img}}">
-            <img src="{{item.right_img}}">
+            <img src="{{item.front_img.url}}">
+            <img src="{{item.back_img.url}}">
+            
+            
+            {% if item.top_img.url == null %}
+            <img src="{{item.top_img.url}}">
+            {%endif%}
+            
+            {% if item.bottom_img.url == null %}
+            <img src="{{item.bottom_img.url}}">
+            {%endif%}
+
+            {% if item.left_img.url == null %}
+            <img src="{{item.left_img.url}}">
+            {%endif%}
+
+            {% if item.right_img.url == null %}
+            <img src="{{item.right_img.url}}">
+            {%endif%}
 
         </div>
 
         <div class="buy_button">
+
+            <h2>BUY HERE:</h2>
+
             <form action="{% url 'charge' %}" method="post">
                 {% csrf_token %}
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ key }}"
-                    data-description="A Django Charge" data-amount="500" data-locale="auto"></script>
+                    data-description="A Django Charge" data-amount="{{price}}" data-locale="auto"></script>
             </form>
         </div>
     </div>
