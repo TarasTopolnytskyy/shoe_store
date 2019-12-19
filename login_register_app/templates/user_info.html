@@ -49,43 +49,49 @@
             <p class="text">{{user.billing_city}}</p>
             <p class="text">{{user.billing_zip}}</p>
         </div>
-            <div class="user_history">
-                <h2>The items you've sold.</h2>
-                <div class="tables">
-                    <table>
-                            <tr>
-                                <th>Item:</th>
-                                <th>Brand:</th>
-                                <th>Price:</th>
-                            </tr>
-                            {% for seller in inventory %}
-                            <tr>
-                                <td>{{item_name.inventory}}</td>
-                                <td>{{item_brand.inventory}}</td>
-                                <td>{{item_price.inventory}}</td>
-                                <td><a href='/{{inventory_id}}'>View</td>
-                            </tr>
-                            {% endfor %}
-                    </table>
-                </div>
-                <h2>The items you've bought.</h2>
-                <div class="tables">
-                    <table>
-                            <tr>
-                                <th>Item</th>
-                                <th>Brand</th>
-                                <th>Price</th>
-                            </tr>
-                            {% for buyer in inventory %}
-                            <tr>
-                                <td>{{item_name.inventory}}</td>
-                                <td>{{item_brand.inventory}}</td>
-                                <td>{{item_price.inventory}}</td>
-                                <td><a href='/{{inventory_id}}'>View</td>
-                            </tr>
-                            {% endfor %}
-                    </table>
-                </div>
+        <div class="user_history">
+            <h2>The items you've sold.</h2>
+            <div class="tables">
+                <table>
+                    <tr>
+                        <th>Item:</th>
+                        <th>Brand:</th>
+                        <th>Price:</th>
+                        <th>Info</th>
+                    </tr>
+                    {% for item in items %}
+                    <tr>
+                        {% if item.seller.id == request.session.user_id %}
+                        <td>{{item.item_name}}</td>
+                        <td>{{item.item_brand}}</td>
+                        <td>{{item.item_price}}</td>
+                        <td><a href='/shoe/{{item.id}}'>View</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <h2>The items you've bought.</h2>
+            <div class="tables">
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Brand</th>
+                        <th>Price</th>
+                        <th>Info</th>
+                    </tr>
+                    {% for item in items %}
+                    <tr>
+                        {% if item.buyer.id == request.session.user_id %}
+                        <td>{{item.item_name}}</td>
+                        <td>{{item.item_brand}}</td>
+                        <td>{{item.item_price}}</td>
+                        <td><a href='/shoe/{{inventory_id}}'>View</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
 
         </div>
 
