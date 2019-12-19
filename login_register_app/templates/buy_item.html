@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Buy</title>
 </head>
+
 <body>
-    <form action="{% url 'charge' %}" method="post">
-        {% csrf_token %}
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ key }}"
-            data-description="A Django Charge" data-amount="500" data-locale="auto"></script>
-    </form>
+
+    <div class="container">
+        <div class="header1">
+            <a href="/success">
+                <h1 class="text">Shoe Store</h1>
+            </a>
+            <div id="buttons">
+
+                <a href="/new_item">SELL</a>
+                <a href="/user">{{request.session.user_first_name}}</a>
+                <a href="/log_out">LOG OUT</a>
+            </div>
+        </div>
+
+        <form action="{% url 'charge' %}" method="post">
+            {% csrf_token %}
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ key }}"
+                data-description="A Django Charge" data-amount="500" data-locale="auto"></script>
+        </form>
+    </div>
 </body>
+
 </html>

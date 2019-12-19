@@ -27,7 +27,7 @@
         </div>
         <div class="items">
             {% for item in items %}
-                <a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a>
+                <p>{{item.item_brand}} {{item.item_name}}</p>
                 <p>Size: {{item.item_size}}</p>
                 <p>Price: {{item.item_price}}</p>
                 {% if item.availability == True%}

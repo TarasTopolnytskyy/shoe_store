@@ -20,8 +20,10 @@ def index(request):
     return redirect('/home')
 
 def home(request):
-
-    return render(request, "home.html")
+    context ={
+        "items" : Inventory.objects.all()
+    }
+    return render(request, "home.html", context)
 
 def login_page(request):
     return render(request, 'login_page.html')
@@ -87,12 +89,12 @@ def item_info(request, inventory_id):
         "price": price,
         "key" : settings.STRIPE_PUBLISHABLE_KEY
     }
+    
     return render(request, "item_info.html", context)
 
 def user_info(request):
     user = User.objects.get(id=request.session['user_id'])
     items = Inventory.objects.all()
-
 
     context = {
         "user" : user,
@@ -169,11 +171,8 @@ def charge(request):
             description='A Django charge',
             source=request.POST['stripeToken']
         )
-        
-
         return render(request, 'charge.html')
 
-    
 def delete(request, inventory_id):
     item = Inventory.objects.get(id = inventory_id)
     item.delete()
