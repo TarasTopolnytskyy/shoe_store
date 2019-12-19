@@ -26,13 +26,6 @@
             </div>
         </div>
         <div class="selector">
-            <select class="select-css">
-                <option>This is a native select element</option>
-                <option>Apples</option>
-                <option>Bananas</option>
-                <option>Grapes</option>
-                <option>Oranges</option>
-            </select>
             <p>Select the size:</p>
             <select>
                 <option value="All">ALL</option>
@@ -44,19 +37,21 @@
 
         </div>
         <div class="items">
-            {% for item in items reversed%}
-            <div class="column">
-                <a href="/shoe/{{item.id}}"><b>{{item.item_brand}} {{item.item_name}}</b></a>
-                <img src='{{item.front_img.url}}'>
-                <p>Size: {{item.item_size}}</p>
-                <p>Price: {{item.item_price}}</p>
-                <p>Date Added: {{item.created_at}}</p>
+            {% for item in items reversed %}
+
+            <div class="listed_for_sale">
+                
+                    <a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a>
+                    <p>Size: {{item.item_size}}</p>
+                    <p>Price: {{item.item_price}}</p>
                 {% if item.availability == True%}
-                <p><b>For Sale</b></p>
+                    <p>For Sale</p>
                 {% endif %}
-            </div>
-            <br><br>
-            {% endfor %}
+                    <br><br>
+                      </div>
+
+                {% endfor %}
+
         </div>
     </div>
 </body>

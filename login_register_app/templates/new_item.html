@@ -39,9 +39,11 @@
             <h2>List A New Item</h2>
             <form action="/create_item" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}<br>
-                Item Brand: <input type="text" name="brand" value=""><br><br>
-                Item Name: <input type="text" name="name" value=""><br><br>
-                Item Main Color: <select name="color_one">
+                <p>Item Brand: </p>
+                <input class="sell_input" type="text" name="brand" value="" placeholder="ITEM BRAND"><br><br>
+                <p>Item Name:</p>
+                <input class="sell_input"  type="text" name="name" value="" placeholder="ITEM NAME"><br><br>
+                Item Main Color: <select  class="select-css" name="color_one">
                     <option value="black">Black</option>
                     <option value="white">White</option>
                     <option value="blue">Blue</option>
@@ -50,7 +52,7 @@
                     <option value="orange">Orange</option>
                     <option value="green">Green</option>
                 </select><br><br>
-                Item Secondary Color: <select name="color_two">
+                Item Secondary Color: <select  class="select-css" name="color_two">
                     <option value="none">None</option>
                     <option value="black">Black</option>
                     <option value="white">White</option>
@@ -60,13 +62,14 @@
                     <option value="orange">Orange</option>
                     <option value="green">Green</option>
                 </select><br><br>
-                Size: <input type="number" name="item_size" min="6" max="17" step=".5" value="6"><br><br>
-                Item Gender: <select name="item_gender">
+                <p>Size:</p> 
+                <input class="shoe_size"  type="number" name="item_size" min="6" max="17" step=".5" value="6"><br><br>
+                Item Gender: <select class="select-css" name="item_gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="unisex">Unisex</option>
                 </select><br><br>
-                Condition: <select name="condition">
+                Condition: <select  class="select-css" name="condition">
                     <option value="deadstock">Deadstock</option>
                     <option value="great">Great</option>
                     <option value="used">Used</option>
@@ -79,12 +82,12 @@
                 Left Photo <i>(optional)</i>: <input type="file" name="left_photo" accept="image/*"><br><br>
                 Right Photo <i>(optional)</i>: <input type="file" name="right_photo" accept="image/*"><br><br>
                 <b>Asking Price: $</b> <input type="number" name="price" min="50" max="100000" step="10" value="50"><br><br>
-                <input type="submit" name="submit" value="Add Item">
+                <input class="button"  type="submit" name="submit" value="Add Item">
             </form>
             <br>
             <form action="cancel" method="POST">
                 {% csrf_token %}
-                <input type="submit" name="submit" value="Cancel">
+                <input class="button_sell" type="submit" name="submit" value="Cancel">
             </form>
         </div>
     </div>
