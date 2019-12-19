@@ -19,43 +19,36 @@
             <h1 class="text">Shoe Store</h1>
 
             <div id="user_buttons">
-                <a href="/success">BACK</a>
                 <a href='new_item'>SELL</a>
+                <a href="/success">BACK</a>
+                <a href="/user/edit">UPDATE YOUR PROFILE</a>
                 <a href="/log_out">LOG OUT</a>
             </div>
         </div>
-        <div class="column">
+        <div class="user_info">
 
-            <h2>User Information</h2>
+            <h2 class="text">User Information</h2>
             <p>First Name: </p>
-            <p>{{user.first_name}}</p>
+            <p class="text">{{user.first_name}}</p>
             <p>Last Name: </p>
-            <p>{{user.last_name}}</p>
+            <p class="text">{{user.last_name}}</p>
             <p>Email: </p>
-            <p>{{user.email}}</p>
+            <p class="text">{{user.email}}</p>
             <p>Shoe Size: </p>
-            <p>{{user.shoe_size}}</p>
+            <p class="text">{{user.shoe_size}}</p>
 
         </div>
-        <div class="column">
-            <p><b>Shipping Address</b></p>
-            <p>{{user.shipping_address}}</p>
-            <p>{{user.shipping_city}}</p>
-            <p>{{user.shipping_zip}}</p>
+        <div class="addres_info">
+            <h2 class="text"><b>Shipping Address:</b></h2>
+            <p class="text">{{user.shipping_address}}</p>
+            <p class="text">{{user.shipping_city}}</p>
+            <p class="text">{{user.shipping_zip}}</p>
 
-            <p><b>Billing Address</b></p>
-            <p>{{user.billing_address}}</p>
-            <p>{{user.billing_city}}</p>
-            <p>{{user.billing_zip}}</p>
+            <h2 class="text"><b>Billing Address:</b></h2>
+            <p class="text">{{user.billing_address}}</p>
+            <p class="text">{{user.billing_city}}</p>
+            <p class="text">{{user.billing_zip}}</p>
         </div>
-
-            <br>
-
-            <a href="/user/edit">Update Your Profile</a>
-
-            <br>
-            <br>
-
             <div class="user_history">
                 <h2>The items you've sold.</h2>
                 <div class="tables">

@@ -6,39 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Update User Information</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-
-
-    <div class="header">
-        <h1>Shoe Store</h1>
-        <div id="sell_buttons">
-            <a href="/success">Home</a>
-            <a href="/new_item">SELL</a>
-            <a href="/log_out">LOG OUT</a>
-
+    <div class="container">
+        <div class="header">
+                <h1>Shoe Store</h1>
+                <div id="sell_buttons">
+                    <a href="/success">HOME</a>
+                    <a href="/new_item">SELL</a>
+                    <a href="/log_out">LOG OUT</a>
+                </div>
+            </div>
+        <div class="update_user">
+            <h2 class="text">Upate Your Info</h2>
+            <form action="/update_user" method="POST">
+                {% csrf_token %}
+                <p class="text">First Name: </p><input class="update_input" type="text" name="first_name" value="{{user.first_name}}"> <br>
+                <p class="text">Last Name: </p><input class="update_input" type="text" name="last_name" value="{{user.last_name}}"> <br>
+                <p class="text">Email: </p><input class="update_input" type="email" name="email" value="{{user.email}}"> <br>
+                <p class="text">Shoe Size</p><input class="shoe_size" type="number" name="shoe_size" min="6" max="17" step=".5" value={{user.shoe_size}}> <br>
+                <p class="text">Shipping Address:</p><input class="update_input" type="text" name="shipping_address" value="{{user.shipping_address}}"> <br>
+                <p class="text">City:</p><input class="update_input" type="text" name="shipping_city" value="{{user.shipping_city}}"> <br>
+                <p class="text">Zip Code:</p><input class="update_input" type="text" name="shipping_zip" value="{{user.shipping_zip}}"> <br>
+                <p class="text">Billing Address:</p><input class="update_input"  type="text" name="billing_address" value="{{user.billing_address}}"> <br>
+                <p class="text">City:</p><input class="update_input" type="text" name="billing_city" value="{{user.billing_city}}"> <br>
+                <p class="text">Zip Code:</p><input class="update_input" type="text" name="billing_zip" value="{{user.billing_zip}}"> <br><br>
+                <input class="button"  type="submit" name="submit" value="Update Profile">
+            </form>
         </div>
     </div>
 
-
-    <h1>Upate You Info</h1>
-
-
-    <form action="/update_user" method="POST">
-        {% csrf_token %}
-        <p>First Name: </p><input type="text" name="first_name" value="{{user.first_name}}"> <br>
-        <p>Last Name: </p><input type="text" name="last_name" value="{{user.last_name}}"> <br>
-        <p>Email: </p><input type="email" name="email" value="{{user.email}}"> <br>
-        <p>Shoe Size</p><input type="number" name="shoe_size" min="6" max="17" step=".5" value={{user.shoe_size}}> <br>
-        <p>Shipping Address:</p><input type="text" name="shipping_address" value="{{user.shipping_address}}"> <br>
-        <p>City:</p><input type="text" name="shipping_city" value="{{user.shipping_city}}"> <br>
-        <p>Zip Code:</p><input type="text" name="shipping_zip" value="{{user.shipping_zip}}"> <br>
-        <p>Billing Address:</p><input type="text" name="billing_address" value="{{user.billing_address}}"> <br>
-        <p>City:</p><input type="text" name="billing_city" value="{{user.billing_city}}"> <br>
-        <p>Zip Code:</p><input type="text" name="billing_zip" value="{{user.billing_zip}}"> <br><br>
-        <input type="submit" name="submit" value="Update Profile">
-    </form>
 
 </body>
 
