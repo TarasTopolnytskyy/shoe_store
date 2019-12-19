@@ -45,15 +45,19 @@
 
         </div>
         <div class="items">
-            {% for item in items %}
-                <a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a>
-                <p>Size: {{item.item_size}}</p>
-                <p>Price: {{item.item_price}}</p>
+            {% for item in items reversed %}
+
+            <div class="listed_for_sale">
+                
+                    <a href="/shoe/{{item.id}}">{{item.item_brand}} {{item.item_name}}</a>
+                    <p>Size: {{item.item_size}}</p>
+                    <p>Price: {{item.item_price}}</p>
                 {% if item.availability == True%}
-                <p>For Sale</p>
+                    <p>For Sale</p>
                 {% endif %}
-                <br><br>
-            {% endfor %}
+                    <br><br>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </body>
