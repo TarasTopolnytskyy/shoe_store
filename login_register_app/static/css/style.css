@@ -129,7 +129,7 @@ input#log_out{
 }
 
 div#buttons{
-    margin-left:500px;
+    margin-left:420px;
 }
 
 div#sell_buttons{
@@ -304,13 +304,15 @@ input.button_sell{
 }
 .listed_for_sale{
     border: 1px solid black;
-    width: 270px;
-    height: 350px;
+    width: 280px;
+    height: 360px;
     border-radius: 10px;
     display: inline-block;
-
     margin:30px;
     padding: 10px;
+    background-image: url("/static/images/update_user.jpg");
+    background-repeat: no-repeat;
+    background-size: 280px 360px;
 }
 .w-100{
     height:400px;
@@ -350,5 +352,8 @@ div#info_description{
 }
 div#remove_button{
     margin-top:100px;
+}
+div#title{
+    margin-top:-20px;
 }
 
